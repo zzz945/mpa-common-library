@@ -34,10 +34,10 @@ export default {
       this.search()
     },
     handleEdit (item) {
-      this.$router.push(`${location.pathname}/edit/${item.id}`)
+      this.$router.push(`${location.pathname.substring(0, location.pathname.lastIndexOf('/'))}/edit/index.html?id=${item.id}`)
     },
     handleAdd () {
-      this.$router.push(`${location.pathname}/add`)
+      this.$router.push(`${location.pathname.substring(0, location.pathname.lastIndexOf('/'))}/add/index.html`)
     }
   }
 }
