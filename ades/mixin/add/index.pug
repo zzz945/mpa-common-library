@@ -1,0 +1,8 @@
+block add-form
+  .add-mixin
+    el-form.add-mixin__form(ref="form", :model="info", label-width="100px", :inline="true")
+      block add-form-items
+      <br>
+      block add-operations
+        .add-mixin__operations
+          el-button(type="primary", @click="handleAdd") Add

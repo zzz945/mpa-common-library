@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import { pageInit as _pageInit } from './_page-common.js'
+import './_interceptors.js'
 
 export function pageInit (params = {}) {
   const {

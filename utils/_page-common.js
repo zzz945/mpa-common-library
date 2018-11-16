@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 import parseQuery, { encodeQuery } from './_parse-query.js'
 import { i18nInit } from './i18n'
+import './_interceptors.js'
 
 export function pageInit (params = {}) {
   const {
