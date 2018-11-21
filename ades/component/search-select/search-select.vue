@@ -1,7 +1,7 @@
 <template lang="pug">
 
 .search-select
-  span {{value.name}}&nbsp;&nbsp;
+  span {{(value || {}).name}}&nbsp;&nbsp;
   el-button(:disabled="disabled", @click="handleBtnClick") Select
   select-dlg(ref="selectDlg",
     :select="select",

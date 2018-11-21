@@ -17,9 +17,9 @@ export default {
     handleAdd () {
       this.$refs.form.validate(valid => {
         if (!valid) return
-        this.addImpl(this.info).then(res => {
+        this.addImpl(this.info).then(id => {
           this.$success('add success').then(_ => {
-            this.$router.push(`${this.getBasePath()}/edit/${res.id}`)
+            this.$router.push(`${location.pathname.substring(0, location.pathname.lastIndexOf('/'))}/edit/${id}?disabled=true`)
           })
         }).catch(this.$apiError)
       })

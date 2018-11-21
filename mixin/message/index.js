@@ -1,32 +1,51 @@
 const mixin = {
   methods: {
     $success (msg) {
-      this.$message({
-        message: msg,
-        type: 'success'
+      return new Promise((resolve, reject) => {
+        return this.$message({
+          message: msg,
+          type: 'success',
+          showClose: true,
+          onClose: resolve
+        })
       })
     },
     $info (msg) {
-      this.$message({
-        message: msg,
+      return new Promise((resolve, reject) => {
+        return this.$message({
+          message: msg,
+          showClose: true,
+          onClose: resolve
+        })
       })
     },
     $warning (msg) {
-      this.$message({
-        message: msg,
-        type: 'warning'
+      return new Promise((resolve, reject) => {
+        return this.$message({
+          message: msg,
+          type: 'warning',
+          showClose: true,
+          onClose: resolve
+        })
       })
     },
     $error (msg) {
-      this.$message.error(msg);
+      return new Promise((resolve, reject) => {
+        return this.$message({
+          message: msg,
+          type: 'error',
+          showClose: true,
+          onClose: resolve
+        })
+      })
     },
     $apiError (e) {
       if (e.data) {
-        this.$error(e.data.msg)
+        return this.$error(e.data.msg)
       } else if (e.response) {
-        this.$error(e.response.data.msg)
+        return this.$error(e.response.data.msg)
       } else {
-        throw e
+        return Promise.reject(e)
       }
     }
   }

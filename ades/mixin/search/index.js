@@ -36,13 +36,6 @@ export default {
       basePath: '',
     }
   },
-  created () {
-    if (this.getBasePath) {
-      this.basePath = this.getBasePath()
-    } else {
-      this.basePath = location.pathname
-    }
-  },
   mounted () {
     this.search()
   },
@@ -69,23 +62,14 @@ export default {
     handleEdit (item) {
       var url
       if (!this.multiSelected.length) {
-        url = `${this.basePath}/edit/${item.id}`
+        url = `${location.pathname}/edit/${item.id}`
       } else {
-        url = `${this.basePath}/edit/${JSON.stringify(this.multiSelected.map(item => item.id))}`
+        url = `${location.pathname}/batch-edit/${JSON.stringify(this.multiSelected.map(item => item.id))}`
       }
-      if (this.basePath === location.basePath) {
-        this.$router.push(url)
-      } else {
-        location.href = url
-      }
+      this.$router.push(url)
     },
     handleAdd () {
-      const url = `${this.basePath}/add`
-      if (this.basePath === location.basePath) {
-        this.$router.push(url)
-      } else {
-        location.href = url
-      }
+      this.$router.push(`${location.pathname}/add`)
     },
     handleCurrentChange (item) {
       this.selected = item
@@ -107,6 +91,10 @@ export default {
           colspan: 1
         }
       }
+    },
+    resetQuerybar () {
+      this.queryParams = {}
+      this.search()
     }
   }
 }
