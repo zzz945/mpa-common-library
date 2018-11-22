@@ -1,5 +1,5 @@
 mixin paginator()
-  .paginator
+  .ades-search__paginator
     el-pagination(layout="total, prev, pager, next, jumper",
       :current-page="curPage",
       :page-size="pageSize",
@@ -26,14 +26,17 @@ mixin filter-btn()
 mixin reset-btn()
   el-button(@click="resetQuerybar") 重置
 
-.search
+block vars
+  - var rootClass = ''
+
+.ades-search(class=rootClass)
   block querybar
-    el-form.querybar(ref="form", :inline="true", :model="queryParams")
+    el-form.ades-search__querybar(ref="form", :inline="true", :model="queryParams")
       block querybar-form-items
       block querybar-operations
   +paginator()
   block table
-    el-table.table(:data="tableData",
+    el-table.ades-search__table(:data="tableData",
       :highlight-current-row="select === true",
       v-loading="loading",
       @current-change="handleCurrentChange",
@@ -47,7 +50,7 @@ mixin reset-btn()
       block table-columns
       el-table-column(label="Operations")
         template(slot-scope="scope")
-          el-button-group.table-operations
+          el-button-group.ades-search__operations
             block table-operations
   <br>
   +paginator()

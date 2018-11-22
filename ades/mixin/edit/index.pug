@@ -1,10 +1,13 @@
+block vars
+  - var rootClass = ''
+
 block edit-form
-  .edit-mixin
-    el-form.edit-mixin__form(ref="form", :model="info", label-width="100px", :inline="true")
-      block edit-form-items
+  .ades-edit(class=rootClass)
+    el-form.ades-edit__form(ref="form", :model="info", label-width="100px", :inline="true")
+      block form-items
       <br>
-      block edit-operations
-        .edit-mixin__btn-wrapper
+      block operations
+        .ades-edit__operations
           el-button(v-if="!editing", type="primary", @click="handleEdit") Edit
           el-button(v-else, type="primary", @click="handleCancel") Cancel
           el-button(type="primary", :disabled="!editing", @click="handleSave") Save
