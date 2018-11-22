@@ -25,7 +25,7 @@ export default {
         if (!valid) return
         this.saveImpl(this.info).then(_ => {
           this.editing = false
-          this.$success('update success')
+          this.$success('update success').then(_ => this.$router.back())
         }).catch(this.$apiError)
       })
     },

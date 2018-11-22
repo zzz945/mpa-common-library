@@ -19,7 +19,7 @@ export default {
         if (!valid) return
         this.addImpl(this.info).then(id => {
           this.$success('add success').then(_ => {
-            this.$router.push(`${location.pathname.substring(0, location.pathname.lastIndexOf('/'))}/edit/${id}?disabled=true`)
+            this.$router.replace(`${location.pathname.substring(0, location.pathname.lastIndexOf('/'))}/edit/${id}?disabled=true`)
           })
         }).catch(this.$apiError)
       })
