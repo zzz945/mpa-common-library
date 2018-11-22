@@ -8,11 +8,12 @@ export default {
   data () {
     return {
       info: {},
+      backup: {},
       editing: !this.$route.query.disabled,
     }
   },
   mounted () {
-    this.getItemImpl(this.$route.params.id).then(info => this.info = info).catch(this.$apiError)
+    this.getItem()
   },
   methods: {
     handleEdit () {
@@ -29,6 +30,13 @@ export default {
     },
     handleCancel () {
       this.editing = false
+      this.info = JSON.parse(JSON.stringify(this.backup))
+    },
+    getItem () {
+      return this.getItemImpl(this.$route.params.id).then(info => {
+        this.info = info
+        this.backup = JSON.parse(JSON.stringify(info))
+      }).catch(this.$apiError)
     }
   }
 }
