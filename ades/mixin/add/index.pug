@@ -1,8 +1,14 @@
 block vars
   - var rootClass = ''
 
+mixin breadcrumb()
+  el-breadcrumb.ades-add__breadcrumb(separator="/")
+    block breadcrumb-items
+
 block add-form
   .ades-add(class=rootClass)
+    +breadcrumb()
+    <br>
     el-form.ades-add__form(ref="form", :model="info", label-width="100px", :inline="true")
       block form-items
       <br>

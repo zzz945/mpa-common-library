@@ -1,8 +1,14 @@
 block vars
   - var rootClass = ''
 
+mixin breadcrumb()
+  el-breadcrumb.ades-batch-edit__breadcrumb(separator="/")
+    block breadcrumb-items
+
 block edit-form
   .ades-batch-edit(class=rootClass)
+    +breadcrumb()
+    <br>
     el-form.ades-batch-edit__form(ref="form", :model="info", label-width="100px", :inline="true")
       block form-items
       <br>

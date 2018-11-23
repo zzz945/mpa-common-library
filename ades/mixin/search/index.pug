@@ -6,7 +6,7 @@ mixin paginator()
       :total="total",
       @current-change="handlePageChange")
     el-select.per-page(v-model="pageSize",
-      @change="search",
+      @change="search(1)",
       size="small")
       el-option(:value="10", label="10/page")
       el-option(:value="20", label="20/page")
@@ -29,7 +29,13 @@ mixin reset-btn()
 block vars
   - var rootClass = ''
 
+mixin breadcrumb()
+  el-breadcrumb.ades-search__breadcrumb(separator="/")
+    block breadcrumb-items
+
 .ades-search(class=rootClass)
+  +breadcrumb()
+  <br>
   block querybar
     el-form.ades-search__querybar(ref="form", :inline="true", :model="queryParams")
       block querybar-form-items
