@@ -40,7 +40,8 @@ export default {
     this.search()
   },
   methods: {
-    search () {
+    search (pageNum) {
+      if (pageNum) this.curPage = pageNum
       return this.searchImpl(this.curPage, this.pageSize, this.queryParams).then(d => {
         this.tableData = d.items
         this.total = d.total
@@ -94,7 +95,7 @@ export default {
     },
     resetQuerybar () {
       this.queryParams = {}
-      this.search()
+      this.search(1)
     }
   }
 }

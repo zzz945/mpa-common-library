@@ -31,6 +31,7 @@ export default {
     },
     handleCancel () {
       this.editing = false
+      this.$router.back()
     }
   }
 }

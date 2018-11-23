@@ -22,7 +22,7 @@ mixin delete-btn()
 mixin add-btn()
   el-button(type="primary", @click="handleAdd", :disabled="disableAdd") 新建
 mixin filter-btn()
-  el-button(type="primary", @click="search") 过滤
+  el-button(type="primary", @click="search(1)") 过滤
 mixin reset-btn()
   el-button(@click="resetQuerybar") 重置
 
