@@ -23,9 +23,12 @@ export default {
     handleSave () {
       this.$refs.form.validate(valid => {
         if (!valid) return
-        this.saveImpl(this.info).then(_ => {
+        this.saveImpl(this.info).then(backUrl => {
           this.editing = false
-          this.$success('update success').then(_ => this.$router.back())
+          this.$success('update success').then(_ => {
+            if (backUrl) this.$router.push(backUrl)
+            else this.$router.back()
+          })
         }).catch(this.$apiError)
       })
     },
