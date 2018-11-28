@@ -7,6 +7,7 @@ el-dialog(
     :disableAdd="true",
     :disableEdit="true",
     :disableDelete="true",
+    v-bind="innerComponentProps",
     @action="handleSearchAction")
   span(slot="footer")
     el-button(@click="close") 取 消
@@ -20,7 +21,7 @@ el-dialog(
 
 export default {
   name: 'class-adviser-select-dlg',
-  props: ['innerComponent', 'select'],
+  props: ['innerComponent', 'innerComponentProps', 'select'],
   data () {
     return {
       dialogVisible: false,

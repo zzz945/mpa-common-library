@@ -6,6 +6,7 @@
   select-dlg(ref="selectDlg",
     :select="select",
     :innerComponent="innerComponent",
+    :innerComponentProps="innerComponentProps",
     @action="handleSelect")
 
 </template>
@@ -22,6 +23,7 @@ export default {
   props: {
     value: {},
     innerComponent: {},
+    innerComponentProps: {},
     disabled: {
       type: Boolean,
       default: false,
