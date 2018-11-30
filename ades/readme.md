@@ -1,0 +1,1 @@
+uml diagram: https://go.gliffy.com/go/publish/12863952

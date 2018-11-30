@@ -33,7 +33,6 @@ export default {
       loading: false,
       selected: '',
       multiSelected: [],
-      basePath: '',
     }
   },
   mounted () {
