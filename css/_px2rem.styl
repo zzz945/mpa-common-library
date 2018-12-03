@@ -1,5 +1,14 @@
+/*
 html
-  font-size: 26.7vw; // 100/375
+  font-size: 100vw;
+
+px2rem(x) {
+  return unit(x/375, 'rem');
+}
+*/
+
+html
+  font-size: 26.7vw; // 100/375, for better development experience
 
 px2rem(x) {
   return unit(x/100, 'rem');
