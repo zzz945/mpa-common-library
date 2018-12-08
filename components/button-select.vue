@@ -2,7 +2,7 @@
   .button-select
     el-button(v-for="(item, i) in items", :key="i",
       :type="value===item?'primary':'default'",
-      @click="$emit('input', item)")
+      @click="handleClick")
       img(v-if="item.icon", :src="item.icon", :width="item.iconSize", :height="item.iconSize")
       span(v-text="item.label")
 </template>
@@ -50,6 +50,10 @@ export default {
     }
   },
   methods: {
+    handleClick (item) {
+      this.$emit('input', item)
+      this.$emit('change', item)
+    }
   }
 }
 </script>
