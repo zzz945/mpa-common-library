@@ -2,7 +2,7 @@
   .button-select
     el-button(v-for="(item, i) in items", :key="i",
       :type="value===item?'primary':'default'",
-      @click="handleClick")
+      @click="handleClick(item)")
       img(v-if="item.icon", :src="item.icon", :width="item.iconSize", :height="item.iconSize")
       span(v-text="item.label")
 </template>
@@ -40,13 +40,13 @@ export default {
     }
   },
   mounted () {
-    if (!(this.items.length && this.items.includes(this.value))) this.$emit('input', this.items[0])
+    if (this.items.length && !this.items.includes(this.value)) this.$emit('input', this.items[0])
   },
   computed: {
   },
   watch: {
     items () {
-      if (!(this.items.includes(this.value))) this.$emit('input', this.items[0])
+      if (this.items.length && !this.items.includes(this.value)) this.$emit('input', this.items[0])
     }
   },
   methods: {
