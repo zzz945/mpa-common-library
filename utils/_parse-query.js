@@ -49,3 +49,8 @@ export function encodeQuery(obj) {
   res = res.slice(0, -1)
   return res
 }
+
+export function appendQuery(url, obj) {
+  if (_isEmpty(obj)) return url
+  return url + (url.indexOf('?')>=0?'&':'?') + encodeQuery(obj)
+}
